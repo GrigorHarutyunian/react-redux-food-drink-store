@@ -1,0 +1,28 @@
+.card {
+  width: 17%;
+  height: 39%;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2%;
+  align-items: center;
+  /* background-size: cover; */
+  object-fit: cover;
+  position: relative;
+  border: 1px solid;
+  border-radius: 10px;
+}
+
+.spans-beer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons-beer {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+}
