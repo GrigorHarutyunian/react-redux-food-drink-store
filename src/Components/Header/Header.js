@@ -6,6 +6,7 @@ import IconButton from "@mui/material/IconButton";
 import { styled } from "@mui/material/styles";
 import { useDispatch } from "react-redux";
 import { thereIsModalBasket } from "../../State/Slices/basketModal";
+import { changeValue } from "../../State/Slices/searchByName";
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
     right: -3,
@@ -19,7 +20,13 @@ export const Header = ({ allItemsCount }) => {
   const dispatch = useDispatch();
   return (
     <header className="headerApp">
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+      <TextField
+        onChange={(evt) => dispatch(changeValue(evt.target.value))}
+        id="outlined-basic"
+        label="Outlined"
+        variant="outlined"
+      />
+
       <a href="#">Home</a>
       <a href="#">Prev</a>
       <a href="#">Next</a>

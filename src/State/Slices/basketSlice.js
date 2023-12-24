@@ -20,8 +20,31 @@ const basketSlice = createSlice({
         return [...state, { ...action.payload, item: 1 }];
       }
     },
+
+    addAndSubtractProductsAmout: (state, action) => {
+      return state.map((beer) => {
+        if (
+          action.payload.state === "subtract" &&
+          beer.id === action.payload.id &&
+          beer.item > 0
+        ) {
+          return { ...beer, item: beer.item - 1 };
+        }
+        if (action.payload.state === "add" && beer.id === action.payload.id) {
+          return { ...beer, item: beer.item + 1 };
+        }
+        return beer;
+      });
+    },
+
+    removeProduct: (state, action) => {
+      return state.filter((val) => {
+        return val.id !== action.payload;
+      });
+    },
   },
 });
 
-export const { addFromMenu } = basketSlice.actions;
+export const { addFromMenu, addAndSubtractProductsAmout, removeProduct } =
+  basketSlice.actions;
 export default basketSlice.reducer;
