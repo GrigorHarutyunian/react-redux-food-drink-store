@@ -17,7 +17,16 @@ const basketSlice = createSlice({
           }
         });
       } else {
-        return [...state, { ...action.payload, item: 1 }];
+        return [
+          ...state,
+          {
+            image_url: action.payload.image_url,
+            id: action.payload.id,
+            name: action.payload.name,
+            srm: action.payload.srm,
+            item: 1,
+          },
+        ];
       }
     },
 

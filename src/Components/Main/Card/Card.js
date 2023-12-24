@@ -30,12 +30,10 @@ export const Card = ({ descriptors }) => {
         <div className="buttons-beer">
           <Button
             onClick={() => dispatch(addFromMenu(descriptors))}
-            style={{ marginRight: "10px" }}
             variant="contained"
           >
             Add
           </Button>
-          <Button variant="contained">Des</Button>
         </div>
       ) : (
         <div className="spans-beer">

@@ -5,11 +5,26 @@ const beerListSlice = createSlice({
   initialState: [],
   reducers: {
     initialBeers: (state, action) => {
-      return action.payload;
+      return action.payload.map((obj) => {
+        return {
+          image_url: obj.image_url,
+          id: obj.id,
+          name: obj.name,
+          srm: obj.srm,
+        };
+      });
     },
 
     addInScrolling: (state, action) => {
-      return [...state, ...action.payload];
+      const newArr = action.payload.map((obj) => {
+        return {
+          image_url: obj.image_url,
+          id: obj.id,
+          name: obj.name,
+          srm: obj.srm,
+        };
+      });
+      return [...state, ...newArr];
     },
   },
 });

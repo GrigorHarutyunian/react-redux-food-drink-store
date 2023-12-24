@@ -18,20 +18,21 @@ export const ModalBasketContent = ({ item }) => {
       >
         <Button
           onClick={() =>
-            dispatch(addAndSubtractProductsAmout({ id: item.id, state: "add" }))
-          }
-        >
-          +
-        </Button>
-        <span>{item.item}</span>
-        <Button
-          onClick={() =>
             dispatch(
               addAndSubtractProductsAmout({ id: item.id, state: "subtract" })
             )
           }
         >
           -
+        </Button>
+        <span>{item.item}</span>
+
+        <Button
+          onClick={() =>
+            dispatch(addAndSubtractProductsAmout({ id: item.id, state: "add" }))
+          }
+        >
+          +
         </Button>
       </ButtonGroup>
       <span style={{ width: "10%" }}>{item.srm * item.item} $</span>
