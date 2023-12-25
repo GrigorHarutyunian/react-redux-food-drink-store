@@ -1,28 +1,101 @@
 .card {
   width: 253px;
-  height: 368px;
+  height: 328px;
   background-size: cover;
   display: flex;
   flex-direction: column;
-  margin-bottom: 2%;
   align-items: center;
-  /* background-size: cover; */
-  object-fit: cover;
   position: relative;
-  border: 1px solid;
+  border: 1px solid #ddd;
   border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 20px 10px;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.08) rotate(0deg); /* Adjusted rotation to 0deg for straightening */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Individual Card Paths */
+.card:nth-child(odd) {
+  transform: translateY(-20px) rotate(3deg);
+}
+
+.card:nth-child(even) {
+  transform: translateY(-20px) rotate(-3deg);
+}
+
+.card:nth-child(3n) {
+  transform: translateY(-20px) rotate(6deg);
+}
+
+/* Card Content Styling */
+.card-content {
+  padding: 15px;
+  text-align: center;
+}
+
+.card-content h2 {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+}
+
+.card-content p {
+  font-size: 0.9em;
+  color: #555;
+}
+.card:hover {
+  transform: translateY(-10px) scale(1.08) rotate(0deg);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-content h2 {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  color: #333; /* Adjusted font color */
+}
+
+.card-content p {
+  font-size: 0.9em;
+  color: #555;
 }
 
 .spans-beer {
+  position: absolute;
+  bottom: 10px; /* Adjusted bottom spacing */
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
 }
 
-.buttons-beer {
-  display: flex;
-  /* flex-direction: column; */
-  justify-content: center;
-  align-items: center;
+.card:hover .spans-beer {
+  opacity: 31;
 }
+
+.spans-beer span {
+  background-color: #3498db;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  font-size: 0.8em;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* .spans-beer span:hover {
+  background-color: #2980b9;
+} */

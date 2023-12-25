@@ -28,17 +28,6 @@
   position: relative;
 }
 
-@keyframes slideIn {
-  from {
-    transform: translateY(-50%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
 .itemList {
   width: 100%;
   height: 17%;
@@ -47,4 +36,43 @@
   align-items: center;
   margin-top: 13px;
   font-size: 23px;
+}
+
+.modal-enter {
+  transform: translateY(-50%);
+  opacity: 0;
+}
+
+.modal-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: opacity 1500ms, transform 1500ms ease-in-out;
+}
+
+.modal-exit {
+  transform: translateY(0);
+}
+
+.modal-exit-active {
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 1500ms, transform 1500ms ease-in-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }

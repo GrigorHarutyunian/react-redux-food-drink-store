@@ -11,7 +11,7 @@ import SvgIcon from "@mui/material/SvgIcon";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-import { DateRangePicker } from "@mui/x-date-pickers-pro/DateRangePicker";
+import { DateTimePicker } from "@mui/x-date-pickers";
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
   "& .MuiBadge-badge": {
@@ -40,21 +40,19 @@ export const Header = ({ allItemsCount }) => {
         label="Outlined"
         variant="outlined"
       />
-
       <IconButton aria-label="cart">
         <StyledBadge color="secondary">
           <HomeIcon sx={{ fontSize: 40 }} />
         </StyledBadge>
       </IconButton>
-
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["DateTimePicker"]}>
-          <DateRangePicker
-            localeText={{ start: "Brewed After", end: "Brewed Before" }}
-          />
+          <div style={{ display: "flex" }}>
+            <DateTimePicker label="Basic date time picker" />
+            <DateTimePicker label="Basic date time picker" />
+          </div>
         </DemoContainer>
       </LocalizationProvider>
-
       <IconButton
         onClick={() => dispatch(thereIsModalBasket(true))}
         aria-label="cart"

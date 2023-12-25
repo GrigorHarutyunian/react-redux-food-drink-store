@@ -22,7 +22,7 @@ export const Card = ({ descriptors }) => {
       className="card"
     >
       <img
-        style={{ width: "40%", height: "86%" }}
+        style={{ width: "40%", height: "82%" }}
         src={descriptors.image_url}
         alt="1"
       ></img>
