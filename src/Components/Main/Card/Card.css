@@ -11,6 +11,7 @@
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin: 20px 10px;
+  cursor: pointer;
 }
 
 .card img {

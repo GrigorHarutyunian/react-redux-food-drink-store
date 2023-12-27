@@ -4,6 +4,8 @@ import baskedReducer from "./Slices/basketSlice.js";
 import baskedModalReducer from "./Slices/basketModal.js";
 import searchOrFilterReducer from "./Slices/searchOrFilter.js";
 import searchByNameReducer from "./Slices/searchByName.js";
+import singleBeerModalReducer from "./Slices/modalSingleBeer.js";
+import singleBeerReducer from "./Slices/singleBeerSlice.js";
 export const store = configureStore({
   reducer: {
     beersList: beersListReducer,
@@ -11,5 +13,7 @@ export const store = configureStore({
     basketModal: baskedModalReducer,
     searchOrFilter: searchOrFilterReducer,
     searchByName: searchByNameReducer,
+    singleBeerModal: singleBeerModalReducer,
+    singleBeer: singleBeerReducer,
   },
 });

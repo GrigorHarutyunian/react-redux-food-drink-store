@@ -39,6 +39,7 @@ export const Header = ({ allItemsCount }) => {
         id="outlined-basic"
         label="Outlined"
         variant="outlined"
+        InputProps={{ autoComplete: "off" }}
       />
       <IconButton aria-label="cart">
         <StyledBadge color="secondary">
@@ -54,7 +55,7 @@ export const Header = ({ allItemsCount }) => {
         </DemoContainer>
       </LocalizationProvider>
       <IconButton
-        onClick={() => dispatch(thereIsModalBasket(true))}
+        onClick={() => dispatch(thereIsModalBasket())}
         aria-label="cart"
       >
         <StyledBadge badgeContent={allItemsCount} color="secondary">

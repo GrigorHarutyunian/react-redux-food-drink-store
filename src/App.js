@@ -7,6 +7,8 @@ import { ModalBasket } from "./Components/ModalBasket/ModalBasket";
 import { useDispatch } from "react-redux";
 import { useFetchBeersScroll } from "./State/Slices/beerListApi";
 import { CSSTransition } from "react-transition-group";
+import { ModalSingleBeer } from "./Components/ModalSingleBeer/ModalSingleBeer";
+
 function App() {
   const { ref } = useFetchBeersScroll();
   const beersList = useSelector((store) => store.beersList);
@@ -16,8 +18,10 @@ function App() {
   }, 0);
   const thereIsModalBasketOpen = useSelector((store) => store.basketModal);
   const searchValue = useSelector((store) => store.searchByName);
+  const thereIsModalSingleBeer = useSelector((store) => store.singleBeerModal);
   const dispatch = useDispatch();
   useFetchBeers(searchValue);
+
   return (
     <div className="App">
       <CSSTransition
@@ -33,6 +37,21 @@ function App() {
       >
         <ModalBasket basketList={basketList} />
       </CSSTransition>
+
+      <CSSTransition
+        in={thereIsModalSingleBeer}
+        timeout={1500} // Duration of the animation
+        classNames={{
+          enter: "modal-enter-single-beer",
+          enterActive: "modal-enter-active-single-beer",
+          exit: "modal-exit-single-beer",
+          exitActive: "modal-exit-active-single-beer",
+        }}
+        unmountOnExit
+      >
+        <ModalSingleBeer />
+      </CSSTransition>
+
       <Header allItemsCount={allItemsCount} />
       <Main beersList={beersList} />
 

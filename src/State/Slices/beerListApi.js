@@ -5,6 +5,7 @@ import { useInView } from "react-intersection-observer";
 import { addInScrolling } from "./beerListSlice";
 import { useSelector } from "react-redux";
 import { searchOrFilter } from "./searchOrFilter";
+import { setBeer } from "./singleBeerSlice";
 
 export const useFetchBeers = (name) => {
   const dispatch = useDispatch();
@@ -72,4 +73,26 @@ export const useFetchBeersScroll = () => {
   }, [inView, dispatch]);
 
   return { ref };
+};
+
+export const useFetchSingleBeer = (beerId) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (beerId) {
+        try {
+          const response = await fetch(
+            `https://api.punkapi.com/v2/beers/${beerId}`
+          );
+          const data = await response.json();
+          dispatch(setBeer(data));
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      }
+    };
+
+    fetchData();
+  }, [beerId]);
 };

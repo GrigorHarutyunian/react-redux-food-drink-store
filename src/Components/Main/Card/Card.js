@@ -3,10 +3,14 @@ import "./Card.css";
 import Button from "@mui/material/Button";
 import { useDispatch } from "react-redux";
 import { addFromMenu } from "../../../State/Slices/basketSlice";
+import { thereIsModalSingleBeer } from "../../../State/Slices/modalSingleBeer";
+import { useFetchSingleBeer } from "../../../State/Slices/beerListApi";
 
 export const Card = ({ descriptors }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [beerId, setBeerId] = useState();
   const dispatch = useDispatch();
+
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
@@ -15,8 +19,14 @@ export const Card = ({ descriptors }) => {
     setIsHovered(false);
   };
 
+  useFetchSingleBeer(beerId);
+
   return (
     <div
+      onClick={() => {
+        setBeerId(descriptors.id);
+        dispatch(thereIsModalSingleBeer());
+      }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className="card"
@@ -29,7 +39,10 @@ export const Card = ({ descriptors }) => {
       {isHovered ? (
         <div className="buttons-beer">
           <Button
-            onClick={() => dispatch(addFromMenu(descriptors))}
+            onClick={(e) => {
+              e.stopPropagation();
+              dispatch(addFromMenu(descriptors));
+            }}
             variant="contained"
           >
             Add
