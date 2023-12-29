@@ -1,15 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-export const SingleBeer = () => {
-  const beer = useSelector((store) => store.singleBeer[0]);
-
+export const SingleBeer = ({ beer }) => {
   if (!beer || !beer.name) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div style={{ width: "100%", height: "80%", padding: "20px" }}>
+    <div style={{ width: "100%", height: "74%", padding: "20px" }}>
       <h2
         style={{
           fontSize: "32px",
@@ -27,7 +25,7 @@ export const SingleBeer = () => {
         <img
           style={{
             width: "25%",
-            height: "89%",
+            height: "82%",
             marginRight: "20px",
             borderRadius: "8px",
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
@@ -37,7 +35,6 @@ export const SingleBeer = () => {
         />
         <div
           style={{
-            display: "flex",
             flexDirection: "column",
             fontSize: "15px",
             alignItems: "flex-start",

@@ -6,6 +6,8 @@ import { addInScrolling } from "./beerListSlice";
 import { useSelector } from "react-redux";
 import { searchOrFilter } from "./searchOrFilter";
 import { setBeer } from "./singleBeerSlice";
+import { actualList } from "./inPageSimilarBeers";
+import { addSimilarBeer } from "./similarBeersSlice";
 
 export const useFetchBeers = (name) => {
   const dispatch = useDispatch();
@@ -95,4 +97,38 @@ export const useFetchSingleBeer = (beerId) => {
 
     fetchData();
   }, [beerId]);
+};
+
+export const useFetchSimilarBeers = (beer) => {
+  const similarBeersObj = useSelector((store) => store.similarBeers);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchSimilarBeers = async () => {
+      if (similarBeersObj[beer?.id]) {
+        console.log("aa");
+        dispatch(actualList(similarBeersObj[beer.id]));
+        return;
+      } else if (beer) {
+        console.log("bbb");
+        let strengthGt = beer.abv;
+        let strengthLt = beer.abv + 1;
+        let bitternessGt = beer.ibu - 10;
+        let bitternessLt = beer.ibu + 10;
+
+        try {
+          const response = await fetch(
+            `https://api.punkapi.com/v2/beers?&abv_gt=${strengthGt}&abv_lt=${strengthLt}&ibu_gt=${bitternessGt}&ibu_lt=${bitternessLt}`
+          );
+          const data = await response.json();
+          dispatch(actualList(data));
+          dispatch(addSimilarBeer({ id: beer.id, data: data }));
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      }
+    };
+
+    fetchSimilarBeers();
+  }, [beer]);
 };

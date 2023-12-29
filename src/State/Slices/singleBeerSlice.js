@@ -10,5 +10,5 @@ const singleBeerSlice = createSlice({
   },
 });
 
-export const { setBeer } = singleBeerSlice.actions;
+export const { setBeer, setId } = singleBeerSlice.actions;
 export default singleBeerSlice.reducer;

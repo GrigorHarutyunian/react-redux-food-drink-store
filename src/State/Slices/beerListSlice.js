@@ -11,6 +11,8 @@ const beerListSlice = createSlice({
           id: obj.id,
           name: obj.name,
           srm: obj.srm,
+          abv: obj.abv,
+          ibu: obj.ibu,
         };
       });
     },
@@ -22,6 +24,8 @@ const beerListSlice = createSlice({
           id: obj.id,
           name: obj.name,
           srm: obj.srm,
+          abv: obj.abv,
+          ibu: obj.ibu,
         };
       });
       return [...state, ...newArr];

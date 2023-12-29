@@ -1,7 +1,53 @@
 .carusel {
-  height: 20%;
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: end;
   align-items: end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.styles-module_carousel-base__3keqD {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  outline: none;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.styles-module_item-provider__YgMwz {
+  overflow: hidden;
+  width: 100%;
+  cursor: auto;
+}
+
+.styles-module_item-container__a8zaY {
+  cursor: auto;
+}
+
+.similarBeer {
+  width: 43%;
+  height: 96%;
+  background: rgb(103, 62, 141);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border: 2px solid;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 1s ease, box-shadow 1s ease;
+  cursor: pointer;
+}
+
+.similarBeer:hover {
+  transform: rotate(360deg);
+  background: rgb(208, 197, 219);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }

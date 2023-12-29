@@ -1,14 +1,17 @@
 import { useState } from "react";
 import "./Card.css";
 import Button from "@mui/material/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addFromMenu } from "../../../State/Slices/basketSlice";
 import { thereIsModalSingleBeer } from "../../../State/Slices/modalSingleBeer";
 import { useFetchSingleBeer } from "../../../State/Slices/beerListApi";
+import { setId } from "../../../State/Slices/idSingleBeer";
+import { addSimilarBeer } from "../../../State/Slices/SimilarBeerSlice";
 
 export const Card = ({ descriptors }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [beerId, setBeerId] = useState();
+
+  const [beer, setBeer] = useState(descriptors);
   const dispatch = useDispatch();
 
   const handleMouseEnter = () => {
@@ -19,13 +22,12 @@ export const Card = ({ descriptors }) => {
     setIsHovered(false);
   };
 
-  useFetchSingleBeer(beerId);
-
   return (
     <div
       onClick={() => {
-        setBeerId(descriptors.id);
+        dispatch(setId(descriptors.id));
         dispatch(thereIsModalSingleBeer());
+        dispatch(addSimilarBeer(descriptors));
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -49,7 +51,13 @@ export const Card = ({ descriptors }) => {
           </Button>
         </div>
       ) : (
-        <div className="spans-beer">
+        <div
+          className="spans-beer"
+          onClick={(e) => {
+            e.stopPropagation();
+            dispatch(addFromMenu(descriptors));
+          }}
+        >
           <span>{descriptors.name}</span>
           <span>{descriptors.srm}$</span>
         </div>

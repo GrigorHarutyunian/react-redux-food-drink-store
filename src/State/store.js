@@ -6,6 +6,11 @@ import searchOrFilterReducer from "./Slices/searchOrFilter.js";
 import searchByNameReducer from "./Slices/searchByName.js";
 import singleBeerModalReducer from "./Slices/modalSingleBeer.js";
 import singleBeerReducer from "./Slices/singleBeerSlice.js";
+import similarBeerseReducer from "./Slices/similarBeersSlice.js";
+import idSingleBeerReducer from "./Slices/idSingleBeer.js";
+import similarBeersInPageReducer from "./Slices/inPageSimilarBeers.js";
+import similarBeerReducer from "./Slices/SimilarBeerSlice.js";
+
 export const store = configureStore({
   reducer: {
     beersList: beersListReducer,
@@ -15,5 +20,9 @@ export const store = configureStore({
     searchByName: searchByNameReducer,
     singleBeerModal: singleBeerModalReducer,
     singleBeer: singleBeerReducer,
+    singleBeerID: idSingleBeerReducer,
+    similarBeers: similarBeerseReducer,
+    similarBeersInPage: similarBeersInPageReducer,
+    similarBeer: similarBeerReducer,
   },
 });
